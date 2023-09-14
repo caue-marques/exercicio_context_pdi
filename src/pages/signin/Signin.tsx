@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Button from "../../components/button/Button";
+import '../../components/button/button.css';
+import '../../components/input/input.css';
 import { useAutCtx } from "../../context/Auth";
-import '../../components/button/button.css'
-import '../../components/input/input.css'
-import './signin.css'
-import Button from "../../components/button/Button.tsx";
+import { useThemeCtx } from "../../context/Theme";
+import './signin.css';
 
-const Signin = ({theme}) => {
+const Signin = () => {
   const { signin } = useAutCtx();
   const navigate = useNavigate();
+  const {theme} = useThemeCtx();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,7 +22,9 @@ const Signin = ({theme}) => {
       return;
     }
 
-    const res = signin(email, password);
+    const userRequest = {email, password}
+
+    const res = signin(userRequest);
 
     if (res) {
       setError(res);

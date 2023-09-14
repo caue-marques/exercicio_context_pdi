@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAutCtx } from "../../context/Auth";
+import Button from "../../components/button/Button";
 import "../../components/button/button.css";
 import "../../components/input/input.css";
+import { useAutCtx } from "../../context/Auth";
+import { useThemeCtx } from "../../context/Theme";
 import "../signin/signin.css";
-import Button from "../../components/button/Button.tsx";
 
-const Signup = ({theme}) => {
+const Signup = () => {
   const [email, setEmail] = useState("");
   const [emailConf, setEmailConf] = useState("");
   const [password, setPassword] = useState("");
@@ -14,6 +15,7 @@ const Signup = ({theme}) => {
   const navigate = useNavigate();
 
   const { signup } = useAutCtx();
+  const { theme } = useThemeCtx();
 
   const handleSignup = () => {
     if (!email || !emailConf || !password) {
@@ -26,7 +28,9 @@ const Signup = ({theme}) => {
       return;
     }
 
-    const res = signup(email, password);
+    const userRequest = {email, password}
+
+    const res = signup(userRequest);
 
     if (res) {
       setError(res);
