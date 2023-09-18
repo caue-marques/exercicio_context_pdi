@@ -24,6 +24,7 @@ const initialState = {
   error: null
 };
 
+//tipagem?
 const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_CONTACT":

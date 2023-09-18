@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
                 setSigned(true)
             }
         }
-    }, []);
+    }, [user]);
 
 
     const signin = (userRequest: User) => {
