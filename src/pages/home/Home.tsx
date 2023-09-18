@@ -16,6 +16,8 @@ const Home = () => {
     <div className={`containerHome ${theme}`}>
       <h2 className="title">Home</h2>
       <div className="title">O tema mudou de cor por causa do contexto!</div>
+
+      <Button text="Acessar CRUD" onClick={() => navigate("/crud")} />
       <Button text="Sair" onClick={() => [signout(), navigate("/")]} />
     </div>
   );

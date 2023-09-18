@@ -19,8 +19,10 @@ export const AuthProvider = ({ children }) => {
                 (user: User) => user.email === JSON.parse(userToken).email
             );
 
-            console.log(hasUser)
-            if (hasUser) setUser(hasUser[0]);
+            if (hasUser) {
+                setUser(hasUser[0])
+                setSigned(true)
+            }
         }
     }, []);
 
